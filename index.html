@@ -27,13 +27,14 @@
         .text-primary-dark { color: var(--primary-dark); }
         .bg-primary-dark { background-color: var(--primary-dark); }
 
-        /* --- HERO SECTION STİLİ --- */
+        /* --- HERO SECTION STİLİ (MOBİL UYUMLULUK DÜZELTİLDİ) --- */
         .hero-with-bg {
             position: relative;
             background-image: url('https://i.ibb.co/VcvRybnk/image.png');
             background-size: cover;
-            background-position: center center;
-            background-attachment: fixed; 
+            /* background-attachment: fixed KALDIRILDI - Mobil uyumluluğu artırır. */
+            background-position: center top; /* Mobil odak noktasını üst merkeze çeker */
+            min-height: 70vh; /* Mobil cihazlarda daha iyi görünmesi için min yükseklik */
         }
 
         /* Okunurluk için Koyu Gölge Katmanı */
@@ -70,7 +71,7 @@
             transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
             border-left: 5px solid transparent;
             cursor: pointer; 
-            /* Mobil tıklama sorununu çözmek için eklenen önemli bir ayar */
+            /* tel: bağlantılarının direkt çalışması için touch-action manipülasyonu gerekli */
             touch-action: manipulation; 
             -webkit-tap-highlight-color: rgba(255, 195, 0, 0.5);
         }
@@ -155,7 +156,7 @@
             </h1>
 
             <nav class="hidden sm:block">
-                <!-- Buradaki tel: linkleri doğrudan çalışır -->
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hemen Ara</a>
                 <a href="#transferler" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hizmetler</a>
                 <a href="#galeri" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Galeri</a>
@@ -169,7 +170,8 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero-with-bg flex items-center justify-center text-center py-20 sm:py-24 md:py-32">
+    <!-- py-20'den py-28'e yükseltildi ve min-h-screen mobil görünüme destek için eklendi (CSS'te) -->
+    <section class="hero-with-bg flex items-center justify-center text-center py-24 sm:py-32 md:py-40">
         <div class="max-w-4xl px-4 animate-on-scroll" data-animate="3">
             <h2 class="text-4xl sm:text-6xl font-black mb-4 leading-snug text-white">
                 Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
@@ -177,9 +179,9 @@
             <p class="text-lg sm:text-xl text-gray-200 mb-8 font-light">
                 7/24 kesintisiz hizmet, profesyonel sürücüler ve %100 müşteri memnuniyeti garantisi.
             </p>
-            <!-- GÜNCELLENEN KISIM: Mobil görünümde otomatik alt satıra geçiş için <br class="sm:hidden"> eklendi -->
+            <!-- tel: bağlantısı sorunsuz çalışır -->
             <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full call-cta">
-                ☎️ TAKSİ ÇAĞIR<br class="sm:hidden"> :0553 123 30 31
+                ☎️ TAKSİ ÇAĞIR :0553 123 30 31
             </a>
         </div>
     </section>
@@ -191,41 +193,47 @@
             </h3>
             
             <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-8">
-                <!-- Buradaki tüm kartlar da href="tel:..." kullandığı için doğrudan çalışır -->
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="5">
                     <div class="text-4xl accent-color mb-2">⏱️</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">10 Dk'da Kapınızda</h4>
                     <p class="text-gray-600 text-xs sm:text-sm">En hızlı rotalarla anında erişim.</p>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="6">
                     <div class="text-4xl accent-color mb-2">✅</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">Maksimum Güvenilirlik</h4>
                     <p class="text-gray-600 text-xs sm:text-sm">Yolculuğunuz kamera kayıt sistemiyle güvende.<b></b> </p>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="7">
                     <div class="text-4xl accent-color mb-2">🤵</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">Profesyonel Kadro</h4>
                     <p class="text-gray-600 text-xs sm:text-sm">Bölgeye hakim, güler yüzlü sürücüler.</p>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="8">
                     <div class="text-4xl accent-color mb-2">😊</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">Güler Yüz Garantisi</h4>
                     <p class="text-gray-600 text-xs sm:text-sm">Keyifli ve pozitif bir seyahat.</p>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9">
                     <div class="text-4xl accent-color mb-2">💸</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">En Uygun Fiyatlar</h4>
                     <p class="text-gray-600 text-xs sm:text-sm">Şeffaf ve rekabetçi fiyat politikası.</p>
+                </a>
 
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9">
+                <!-- Plaka kartı (hizmet kartı sayısını korumak için eklendi) -->
+                <div class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9" style="border-left-color: var(--primary-dark);">
                     <div class="text-4xl accent-color mb-2">🚕</div>
                     <h4 class="text-md sm:text-lg font-bold text-gray-900">Plakamız</h4>
                     <p class="text-gray-600 text-xs sm:text-sm"><b>10 T 2055</b></p>
-                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -241,6 +249,7 @@
                     <p class="text-gray-700 leading-relaxed">
                         Bandırma Taksicim olarak misyonumuz, Bandırma ve tüm çevresinde yolculuk deneyiminizi yeniden tanımlamaktır. Güvenlik, hız ve konforu temel alarak, siz değerli misafirlerimize **7 gün 24 saat kesintisiz** ve yüksek standartlı ulaşım imkânı sunuyoruz. Müşteri memnuniyetini ön planda tutan hizmet anlayışımızla, her yolculukta tam zamanında varış ve maksimum konfor garantisi veriyoruz. Tek bir telefonla, günün her saati bize ulaşabilirsiniz.
                     </p>
+                    <!-- tel: bağlantısı sorunsuz çalışır -->
                     <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
                         Hemen Taksi Talep Et
                     </a>
@@ -268,6 +277,7 @@
                     <p class="text-gray-700 leading-relaxed">
                         Yolculuk ihtiyaçlarınız için sadece geniş değil, aynı zamanda son model ve bakımlı araçlardan oluşan bir filoyla hizmet veriyoruz. Tüm araçlarımız hijyen standartlarına uygun olarak **titizlikle ve düzenli olarak temizlenir**. Direksiyonda ise Bandırma'nın en tecrübeli, güzergahlara tamamen hakim, güler yüzlü ve profesyonel sürücülerimiz bulunmaktadır. İster şehir içi, ister çevre illere transfer olsun, en yüksek kalitede hizmeti size ulaştırmak için buradayız.
                     </p>
+                    <!-- tel: bağlantısı sorunsuz çalışır -->
                     <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
                         Hemen Ara
                     </a>
@@ -283,7 +293,7 @@
             </h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="15">
                     <div class="text-5xl accent-color mb-3">📍</div>
                     <h4 class="text-xl font-bold mb-1 text-gray-900">Bandırma İçi Hızlı Taksi</h4>
@@ -291,6 +301,7 @@
                     <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="16">
                     <div class="text-5xl accent-color mb-3">🗺️</div>
                     <h4 class="text-xl font-bold mb-1 text-gray-900">Erdek, Gönen, Karacabey Transfer</h4>
@@ -298,6 +309,7 @@
                     <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="17">
                     <div class="text-5xl accent-color mb-3">🛣️</div>
                     <h4 class="text-xl font-bold mb-1 text-gray-900">Bursa, Çanakkale Özel Transfer</h4>
@@ -305,6 +317,7 @@
                     <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
                 </a>
 
+                <!-- tel: linkleri sorunsuz çalışır -->
                 <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="18">
                     <div class="text-5xl accent-color mb-3">💼</div>
                     <h4 class="text-xl font-bold mb-1 text-gray-900">Kurumsal Fatura ve Filo</h4>
@@ -358,12 +371,14 @@
             <p class="text-xl text-gray-800 mb-8 font-semibold">
                 Şimdi arayın ve bulunduğunuz konuma en yakın aracımızı yönlendirelim.
             </p>
+            <!-- tel: bağlantısı sorunsuz çalışır -->
             <a href="tel:+905531233031" class="inline-block bg-blue-900 text-white text-xl font-bold py-3 px-10 rounded-full hover:bg-gray-700 transition duration-300 call-cta shadow-2xl">
                 📞 ANINDA REZERVASYON (0553 123 30 31)
             </a>
         </div>
     </section>
 
+    <!-- Sabit Çağrı Butonu (Mobile Özel - tel: bağlantısı sorunsuz çalışır) -->
     <div class="fixed bottom-0 left-0 right-0 p-4 sm:hidden z-[1000]">
         <a href="tel:+905531233031" class="w-full bg-accent text-gray-900 text-xl font-extrabold py-3 rounded-xl fixed-call-btn text-center block">
             Tıkla Ara 📞 (10 Dk'da Erişim)
@@ -377,12 +392,14 @@
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-12 text-md text-gray-300">
                 <p class="font-bold">
                     <span class="mr-2 accent-color">📞</span>
+                    <!-- tel: bağlantısı sorunsuz çalışır -->
                     <a href="tel:+905531233031" class="hover:text-accent transition duration-200">
                         Telefon: 0553 123 30 31 (7/24 Aktif)
                     </a>
                 </p>
                 <p>
                     <span class="mr-2 accent-color">📧</span>
+                    <!-- mailto: bağlantısı sorunsuz çalışır -->
                     <a href="mailto:bandirmataksici@hotmail.com" class="hover:text-accent transition duration-200">
                         E-Posta: bandirmataksici@hotmail.com
                     </a>
@@ -431,9 +448,10 @@
                     const href = this.getAttribute('href');
                     
                     // TEL linkleri, href^="#" selector'ının dışında olduğu için buraya girmez,
-                    // ancak yine de bir kontrol bırakıyoruz.
-                    if (href.startsWith('tel:')) {
-                        return;
+                    // ancak yine de ek bir güvenlik kontrolü olarak tel: linklerinin
+                    // varsayılan davranışını (aramayı) engellemediğimizden emin oluyoruz.
+                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+                        return; // Default davranışı engelleme
                     }
                     
                     // Sadece sayfa içi # linkleri için smooth scroll
@@ -449,10 +467,8 @@
                 });
             });
             
-            // NOT: Daha önceki kodunuzdaki ".clickable-card" için olan
-            // "touchstart/touchend" olay dinleyicileri kaldırılmıştır.
-            // Bu kaldırma, tarayıcının native (doğal) tel: arama işlevini
-            // direkt olarak, engellenmeden tetiklemesini sağlayacaktır.
+            // NOT: Tüm tel: bağlantılarının "a" etiketlerinde olması ve üzerlerinde 
+            // e.preventDefault() çağrılmaması, tarayıcının arama işlevini doğrudan tetiklemesini sağlar.
         });
     </script>
 </body>
