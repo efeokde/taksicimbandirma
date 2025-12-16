@@ -1,475 +1,453 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANDIRMA TAKSİCİM | Çevredeki En Kapsamlı Taksi Hizmeti</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
-    
-    <style>
-        /* Ana Renk Paleti */
-        :root {
-            --primary-dark: #152F4F; /* Koyu Lacivert */
-            --accent-yellow: #FFC300; /* Parlak Sarı Vurgu */
-            --background-light: #f8f9fa; /* Açık ve temiz arka plan */
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-light);
-            color: #1f2937;
-        }
-        
-        /* Vurgu Rengi Tanımlamaları */
-        .accent-color { color: var(--accent-yellow); }
-        .bg-accent { background-color: var(--accent-yellow); }
-        .text-primary-dark { color: var(--primary-dark); }
-        .bg-primary-dark { background-color: var(--primary-dark); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANDIRMA TAKSİCİM | Çevredeki En Kapsamlı Taksi Hizmeti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Ana Renk Paleti */
+        :root {
+            --primary-dark: #152F4F; /* Koyu Lacivert */
+            --accent-yellow: #FFC300; /* Parlak Sarı Vurgu */
+            --background-light: #f8f9fa; /* Açık ve temiz arka plan */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: #1f2937;
+        }
+        
+        /* Vurgu Rengi Tanımlamaları */
+        .accent-color { color: var(--accent-yellow); }
+        .bg-accent { background-color: var(--accent-yellow); }
+        .text-primary-dark { color: var(--primary-dark); }
+        .bg-primary-dark { background-color: var(--primary-dark); }
 
-        /* --- HERO SECTION STİLİ (MOBİL UYUMLULUK DÜZELTİLDİ) --- */
-        .hero-with-bg {
-            position: relative;
-            background-image: url('https://i.ibb.co/VcvRybnk/image.png');
-            background-size: cover;
-            /* background-attachment: fixed KALDIRILDI - Mobil uyumluluğu artırır. */
-            background-position: center top; /* Mobil odak noktasını üst merkeze çeker */
-            min-height: 70vh; /* Mobil cihazlarda daha iyi görünmesi için min yükseklik */
-        }
+        /* --- HERO SECTION STİLİ (MOBİL UYUMLULUK DÜZELTİLDİ) --- */
+        .hero-with-bg {
+            position: relative;
+            background-image: url('https://i.ibb.co/VcvRybnk/image.png');
+            background-size: cover;
+            /* background-attachment: fixed KALDIRILDI - Mobil uyumluluğu artırır. */
+            background-position: center top; /* Mobil odak noktasını üst merkeze çeker */
+            min-height: 70vh; /* Mobil cihazlarda daha iyi görünmesi için min yükseklik */
+        }
 
-        /* Okunurluk için Koyu Gölge Katmanı */
-        .hero-with-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(21, 47, 79, 0.75); /* primary-dark (Lacivert) %75 Opaklık */
-            z-index: 1;
-        }
+        /* Okunurluk için Koyu Gölge Katmanı */
+        .hero-with-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(21, 47, 79, 0.75); /* primary-dark (Lacivert) %75 Opaklık */
+            z-index: 1;
+        }
 
-        /* İçerik, gölge katmanının üzerinde olmalı */
-        .hero-with-bg > div {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Dinamik Çağrı Butonu Stili */
-        .call-cta {
-            transition: all 0.2s ease-in-out; 
-            box-shadow: 0 4px 10px rgba(255, 195, 0, 0.4);
-            color: #111827;
-        }
-        .call-cta:hover, .call-cta:active {
-            transform: scale(1.02);
-            box-shadow: 0 6px 15px rgba(255, 195, 0, 0.6);
-        }
+        /* İçerik, gölge katmanının üzerinde olmalı */
+        .hero-with-bg > div {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Dinamik Çağrı Butonu Stili */
+        .call-cta {
+            transition: all 0.2s ease-in-out; 
+            box-shadow: 0 4px 10px rgba(255, 195, 0, 0.4);
+            color: #111827;
+        }
+        .call-cta:hover, .call-cta:active {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(255, 195, 0, 0.6);
+        }
 
-        /* Kartlar için mobil uyumlu tıklanma alanı */
-        .clickable-card {
-            transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
-            border-left: 5px solid transparent;
-            cursor: pointer; 
-            /* tel: bağlantılarının direkt çalışması için touch-action manipülasyonu gerekli */
-            touch-action: manipulation; 
-            -webkit-tap-highlight-color: rgba(255, 195, 0, 0.5);
-        }
-        .clickable-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-left-color: var(--accent-yellow);
-        }
-        .clickable-card:active {
-            transform: translateY(0px) scale(0.98); 
-            border-left-color: var(--primary-dark);
-        }
+        /* Kartlar için mobil uyumlu tıklanma alanı */
+        .clickable-card {
+            transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
+            border-left: 5px solid transparent;
+            cursor: pointer; 
+            /* tel: bağlantılarının direkt çalışması için touch-action manipülasyonu gerekli */
+            touch-action: manipulation; 
+            -webkit-tap-highlight-color: rgba(255, 195, 0, 0.5);
+        }
+        .clickable-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-yellow);
+        }
+        .clickable-card:active {
+            transform: translateY(0px) scale(0.98); 
+            border-left-color: var(--primary-dark);
+        }
 
-        /* --- ANİMASYON CSS (Scroll Reveal) --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(15px);
-            z-index: 10; 
-        }
-        .is-visible {
-            animation: fadeIn 0.7s ease-out forwards;
-        }
+        /* --- ANİMASYON CSS (Scroll Reveal) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(15px);
+            z-index: 10; 
+        }
+        .is-visible {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
 
-        /* Metin Kutucuğu Stili */
-        .text-box {
-            background-color: #ffffff;
-            border-left: 5px solid var(--accent-yellow);
-        }
+        /* Metin Kutucuğu Stili */
+        .text-box {
+            background-color: #ffffff;
+            border-left: 5px solid var(--accent-yellow);
+        }
 
-        /* Sabit Çağrı Butonu (Mobile Özel) */
-        .fixed-call-btn {
-            z-index: 1000;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-            animation: pulse 1.8s infinite;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.5);
-        }
-        .fixed-call-btn:active {
-            transform: scale(0.98);
-            box-shadow: none;
-            animation: none;
-        }
+        /* Sabit Çağrı Butonu (Mobile Özel) */
+        .fixed-call-btn {
+            z-index: 1000;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            animation: pulse 1.8s infinite;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.5);
+        }
+        .fixed-call-btn:active {
+            transform: scale(0.98);
+            box-shadow: none;
+            animation: none;
+        }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.02); opacity: 0.95; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-        /* Galeri Resmi Stili */
-        .gallery-img-wrapper {
-            transition: box-shadow 0.3s;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .gallery-img-wrapper img {
-            transition: transform 0.4s ease-out; 
-        }
-        .gallery-img-wrapper:hover img {
-            transform: scale(1.05);
-        }
-        .gallery-img-wrapper:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
+        /* Galeri Resmi Stili */
+        .gallery-img-wrapper {
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .gallery-img-wrapper img {
+            transition: transform 0.4s ease-out; 
+        }
+        .gallery-img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-img-wrapper:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
 
-        /* Modal Yapısı (Tamamen Gizlenmiştir) */
-        #call-modal {
-            display: none !important; 
-        }
-    </style>
+        /* Modal Yapısı (Tamamen Gizlenmiştir) */
+        #call-modal {
+            display: none !important; 
+        }
+    </style>
 </head>
 <body>
 
-    <header class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            
-            <h1 class="text-2xl font-black text-gray-900 animate-on-scroll" data-animate="1">
-                <span class="accent-color">BANDIRMA</span> <span class="text-gray-900">TAKSİCİM</span>
-            </h1>
+    <header class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            
+            <h1 class="text-2xl font-black text-gray-900 animate-on-scroll" data-animate="1">
+                <span class="accent-color">BANDIRMA</span> <span class="text-gray-900">TAKSİCİM</span>
+            </h1>
 
-            <nav class="hidden sm:block">
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hemen Ara</a>
-                <a href="#transferler" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hizmetler</a>
-                <a href="#galeri" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Galeri</a>
-                <a href="#iletisim" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">İletişim</a>
-            </nav>
-            
-            <a href="tel:+905531233031" class="bg-accent text-gray-900 px-4 py-2 rounded-full font-bold text-sm call-cta animate-on-scroll" data-animate="2">
-                <span class="hidden sm:inline">Hemen</span> Ara
-            </a>
-        </div>
-    </header>
+            <nav class="hidden sm:block">
+                                <a href="tel:+905531233031" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hemen Ara</a>
+                <a href="#transferler" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Hizmetler</a>
+                <a href="#galeri" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">Galeri</a>
+                <a href="#iletisim" class="text-gray-600 hover:text-gray-900 font-medium px-4 transition">İletişim</a>
+            </nav>
+            
+            <a href="tel:+905531233031" class="bg-accent text-gray-900 px-4 py-2 rounded-full font-bold text-sm call-cta animate-on-scroll" data-animate="2">
+                <span class="hidden sm:inline">Hemen</span> Ara
+            </a>
+        </div>
+    </header>
 
-    <!-- HERO SECTION -->
-    <!-- py-20'den py-28'e yükseltildi ve min-h-screen mobil görünüme destek için eklendi (CSS'te) -->
-    <section class="hero-with-bg flex items-center justify-center text-center py-24 sm:py-32 md:py-40">
-        <div class="max-w-4xl px-4 animate-on-scroll" data-animate="3">
-            <h2 class="text-4xl sm:text-6xl font-black mb-4 leading-snug text-white">
-                Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
-            </h2>
-            <p class="text-lg sm:text-xl text-gray-200 mb-8 font-light">
-                7/24 kesintisiz hizmet, profesyonel sürücüler ve %100 müşteri memnuniyeti garantisi.
-            </p>
-            <!-- tel: bağlantısı sorunsuz çalışır -->
-            <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full call-cta">
-                ☎️ TAKSİ ÇAĞIR :0553 123 30 31
-            </a>
-        </div>
-    </section>
-    
-    <section id="ksp" class="py-16 sm:py-20 bg-background-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="4">
-                Neden <span class="accent-color">Bandırma Taksicim</span>?
-            </h3>
-            
-            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-8">
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="5">
-                    <div class="text-4xl accent-color mb-2">⏱️</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">10 Dk'da Kapınızda</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm">En hızlı rotalarla anında erişim.</p>
-                </a>
+            <section class="hero-with-bg flex items-center justify-center text-center py-24 sm:py-32 md:py-40">
+        <div class="max-w-4xl px-4 animate-on-scroll" data-animate="3">
+            <h2 class="text-4xl sm:text-6xl font-black mb-4 leading-snug text-white">
+                Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-200 mb-8 font-light">
+                7/24 kesintisiz hizmet, profesyonel sürücüler ve %100 müşteri memnuniyeti garantisi.
+            </p>
+                        <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 text-xl sm:text-2xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full call-cta">
+                ☎️ TAKSİ ÇAĞIR :0553 123 30 31
+            </a>
+        </div>
+    </section>
+    
+    <section id="ksp" class="py-16 sm:py-20 bg-background-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="4">
+                Neden <span class="accent-color">Bandırma Taksicim</span>?
+            </h3>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-8">
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="5">
+                    <div class="text-4xl accent-color mb-2">⏱️</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">10 Dk'da Kapınızda</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">En hızlı rotalarla anında erişim.</p>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="6">
-                    <div class="text-4xl accent-color mb-2">✅</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Maksimum Güvenilirlik</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm">Yolculuğunuz kamera kayıt sistemiyle güvende.<b></b> </p>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="6">
+                    <div class="text-4xl accent-color mb-2">✅</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Maksimum Güvenilirlik</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">Yolculuğunuz kamera kayıt sistemiyle güvende.<b></b> </p>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="7">
-                    <div class="text-4xl accent-color mb-2">🤵</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Profesyonel Kadro</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm">Bölgeye hakim, güler yüzlü sürücüler.</p>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="7">
+                    <div class="text-4xl accent-color mb-2">🤵</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Profesyonel Kadro</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">Bölgeye hakim, güler yüzlü sürücüler.</p>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="8">
-                    <div class="text-4xl accent-color mb-2">😊</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Güler Yüz Garantisi</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm">Keyifli ve pozitif bir seyahat.</p>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="8">
+                    <div class="text-4xl accent-color mb-2">😊</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Güler Yüz Garantisi</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">Keyifli ve pozitif bir seyahat.</p>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9">
-                    <div class="text-4xl accent-color mb-2">💸</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">En Uygun Fiyatlar</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm">Şeffaf ve rekabetçi fiyat politikası.</p>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9">
+                    <div class="text-4xl accent-color mb-2">💸</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">En Uygun Fiyatlar</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">Şeffaf ve rekabetçi fiyat politikası.</p>
+                </a>
 
-                <!-- Plaka kartı (hizmet kartı sayısını korumak için eklendi) -->
-                <div class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9" style="border-left-color: var(--primary-dark);">
-                    <div class="text-4xl accent-color mb-2">🚕</div>
-                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Plakamız</h4>
-                    <p class="text-gray-600 text-xs sm:text-sm"><b>10 T 2055</b></p>
-                </div>
-            </div>
-        </div>
-    </section>
+                                <div class="clickable-card block bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="9" style="border-left-color: var(--primary-dark);">
+                    <div class="text-4xl accent-color mb-2">🚕</div>
+                    <h4 class="text-md sm:text-lg font-bold text-gray-900">Plakamız</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm"><b>10 T 2055</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="py-16 sm:py-20 bg-background-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                
-                <div class="text-box p-8 rounded-xl shadow-lg animate-on-scroll" data-animate="10">
-                    <h4 class="text-3xl font-extrabold mb-4 text-gray-900">
-                        <span class="accent-color">Güvenin Adresi:</span> Bandırma'nın 7/24 Taksicim Hizmeti
-                    </h4>
-                    <p class="text-gray-700 leading-relaxed">
-                        Bandırma Taksicim olarak misyonumuz, Bandırma ve tüm çevresinde yolculuk deneyiminizi yeniden tanımlamaktır. Güvenlik, hız ve konforu temel alarak, siz değerli misafirlerimize **7 gün 24 saat kesintisiz** ve yüksek standartlı ulaşım imkânı sunuyoruz. Müşteri memnuniyetini ön planda tutan hizmet anlayışımızla, her yolculukta tam zamanında varış ve maksimum konfor garantisi veriyoruz. Tek bir telefonla, günün her saati bize ulaşabilirsiniz.
-                    </p>
-                    <!-- tel: bağlantısı sorunsuz çalışır -->
-                    <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
-                        Hemen Taksi Talep Et
-                    </a>
-                </div>
+    <section class="py-16 sm:py-20 bg-background-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                
+                <div class="text-box p-8 rounded-xl shadow-lg animate-on-scroll" data-animate="10">
+                    <h4 class="text-3xl font-extrabold mb-4 text-gray-900">
+                        <span class="accent-color">Güvenin Adresi:</span> Bandırma'nın 7/24 Taksicim Hizmeti
+                    </h4>
+                    <p class="text-gray-700 leading-relaxed">
+                        Bandırma Taksicim olarak misyonumuz, Bandırma ve tüm çevresinde yolculuk deneyiminizi yeniden tanımlamaktır. Güvenlik, hız ve konforu temel alarak, siz değerli misafirlerimize **7 gün 24 saat kesintisiz** ve yüksek standartlı ulaşım imkânı sunuyoruz. Müşteri memnuniyetini ön planda tutan hizmet anlayışımızla, her yolculukta tam zamanında varış ve maksimum konfor garantisi veriyoruz. Tek bir telefonla, günün her saati bize ulaşabilirsiniz.
+                    </p>
+                                        <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
+                        Hemen Taksi Talep Et
+                    </a>
+                </div>
 
-                <div class="aspect-video rounded-xl shadow-2xl flex items-center justify-center animate-on-scroll overflow-hidden" data-animate="11">
-                    <img src="https://i.ibb.co/1J2f5gWk/image.png" alt="Taksi Aracımız ve Güvenlik" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="aspect-video rounded-xl shadow-2xl flex items-center justify-center animate-on-scroll overflow-hidden" data-animate="11">
+                    <img src="https://i.ibb.co/1J2f5gWk/image.png" alt="Taksi Aracımız ve Güvenlik" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="py-16 sm:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                
-                <div class="aspect-video rounded-xl shadow-2xl flex items-center justify-center order-2 lg:order-1 animate-on-scroll overflow-hidden" data-animate="12">
-                    <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Konforlu Filo İç Görünümü" class="w-full h-full object-cover">
-                </div>
+    <section class="py-16 sm:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                
+                <div class="aspect-video rounded-xl shadow-2xl flex items-center justify-center order-2 lg:order-1 animate-on-scroll overflow-hidden" data-animate="12">
+                    <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Konforlu Filo İç Görünümü" class="w-full h-full object-cover">
+                </div>
 
-                <div class="text-box p-8 rounded-xl shadow-lg order-1 lg:order-2 animate-on-scroll" data-animate="13">
-                    <h4 class="text-3xl font-extrabold mb-4 text-gray-900">
-                        <span class="accent-color">Konforlu Filo,</span> %100 Hijyen Garantisi
-                    </h4>
-                    <p class="text-gray-700 leading-relaxed">
-                        Yolculuk ihtiyaçlarınız için sadece geniş değil, aynı zamanda son model ve bakımlı araçlardan oluşan bir filoyla hizmet veriyoruz. Tüm araçlarımız hijyen standartlarına uygun olarak **titizlikle ve düzenli olarak temizlenir**. Direksiyonda ise Bandırma'nın en tecrübeli, güzergahlara tamamen hakim, güler yüzlü ve profesyonel sürücülerimiz bulunmaktadır. İster şehir içi, ister çevre illere transfer olsun, en yüksek kalitede hizmeti size ulaştırmak için buradayız.
-                    </p>
-                    <!-- tel: bağlantısı sorunsuz çalışır -->
-                    <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
-                        Hemen Ara
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="text-box p-8 rounded-xl shadow-lg order-1 lg:order-2 animate-on-scroll" data-animate="13">
+                    <h4 class="text-3xl font-extrabold mb-4 text-gray-900">
+                        <span class="accent-color">Konforlu Filo,</span> %100 Hijyen Garantisi
+                    </h4>
+                    <p class="text-gray-700 leading-relaxed">
+                        Yolculuk ihtiyaçlarınız için sadece geniş değil, aynı zamanda son model ve bakımlı araçlardan oluşan bir filoyla hizmet veriyoruz. Tüm araçlarımız hijyen standartlarına uygun olarak **titizlikle ve düzenli olarak temizlenir**. Direksiyonda ise Bandırma'nın en tecrübeli, güzergahlara tamamen hakim, güler yüzlü ve profesyonel sürücülerimiz bulunmaktadır. İster şehir içi, ister çevre illere transfer olsun, en yüksek kalitede hizmeti size ulaştırmak için buradayız.
+                    </p>
+                                        <a href="tel:+905531233031" class="inline-block bg-accent text-gray-900 font-bold py-2 px-4 rounded-full call-cta text-sm mt-4">
+                        Hemen Ara
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="transferler" class="py-16 sm:py-20 bg-background-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="14">
-                Geniş Alan <span class="accent-color">Transfer</span> Çözümlerimiz
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="15">
-                    <div class="text-5xl accent-color mb-3">📍</div>
-                    <h4 class="text-xl font-bold mb-1 text-gray-900">Bandırma İçi Hızlı Taksi</h4>
-                    <p class="text-gray-600 text-sm">Bandırma merkezinde en hızlı ulaşım garantisi. Bekleme yok.</p>
-                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
-                </a>
+    <section id="transferler" class="py-16 sm:py-20 bg-background-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="14">
+                Geniş Alan <span class="accent-color">Transfer</span> Çözümlerimiz
+            </b>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="15">
+                    <div class="text-5xl accent-color mb-3">📍</div>
+                    <h4 class="text-xl font-bold mb-1 text-gray-900">Bandırma İçi Hızlı Taksi</h4>
+                    <p class="text-gray-600 text-sm">Bandırma merkezinde en hızlı ulaşım garantisi. Bekleme yok.</p>
+                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="16">
-                    <div class="text-5xl accent-color mb-3">🗺️</div>
-                    <h4 class="text-xl font-bold mb-1 text-gray-900">Erdek, Gönen, Karacabey Transfer</h4>
-                    <p class="text-gray-600 text-sm">Geniş hizmet ağı ile çevre ilçelere güvenli ulaşım.</p>
-                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="16">
+                    <div class="text-5xl accent-color mb-3">🗺️</div>
+                    <h4 class="text-xl font-bold mb-1 text-gray-900">Erdek, Gönen, Karacabey Transfer</h4>
+                    <p class="text-gray-600 text-sm">Geniş hizmet ağı ile çevre ilçelere güvenli ulaşım.</p>
+                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="17">
-                    <div class="text-5xl accent-color mb-3">🛣️</div>
-                    <h4 class="text-xl font-bold mb-1 text-gray-900">Bursa, Çanakkale Özel Transfer</h4>
-                    <p class="text-gray-600 text-sm">Konforlu araçlarla uzun mesafe şehirler arası yolculuk.</p>
-                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
-                </a>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="17">
+                    <div class="text-5xl accent-color mb-3">🛣️</div>
+                    <h4 class="text-xl font-bold mb-1 text-gray-900">Bursa, Çanakkale Özel Transfer</h4>
+                    <p class="text-gray-600 text-sm">Konforlu araçlarla uzun mesafe şehirler arası yolculuk.</p>
+                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
+                </a>
 
-                <!-- tel: linkleri sorunsuz çalışır -->
-                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="18">
-                    <div class="text-5xl accent-color mb-3">💼</div>
-                    <h4 class="text-xl font-bold mb-1 text-gray-900">Kurumsal Fatura ve Filo</h4>
-                    <p class="text-gray-600 text-sm">Şirketler için toplu taşımacılık ve faturalı hizmetler.</p>
-                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
-                </a>
-            </div>
-        </div>
-    </section>
+                                <a href="tel:+905531233031" class="clickable-card block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center animate-on-scroll" data-animate="18">
+                    <div class="text-5xl accent-color mb-3">💼</div>
+                    <h4 class="text-xl font-bold mb-1 text-gray-900">Kurumsal Fatura ve Filo</h4>
+                    <p class="text-gray-600 text-sm">Şirketler için toplu taşımacılık ve faturalı hizmetler.</p>
+                    <span class="accent-color font-semibold mt-2 inline-block">📞 TIKLA ARA</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <section id="galeri" class="py-16 sm:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="19">
-                Bandırma <span class="accent-color">Taksicim</span> Foto Galeri
-            </h3>
+    <section id="galeri" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="19">
+                Bandırma <span class="accent-color">Taksicim</span> Foto Galeri
+            </h3>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="20">
-                    <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Galeri 1" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="21">
-                    <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi Galeri 2" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="22">
-                    <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Taksi Galeri 3" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="23">
-                    <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Taksi Galeri 4" class="w-full h-full object-cover">
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="20">
+                    <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Galeri 1" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="21">
+                    <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi Galeri 2" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="22">
+                    <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Taksi Galeri 3" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="23">
+                    <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Taksi Galeri 4" class="w-full h-full object-cover">
+                </div>
 
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="24">
-                    <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Galeri 5" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="25">
-                    <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Taksi Galeri 6" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="24">
+                    <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Galeri 5" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="25">
+                    <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Taksi Galeri 6" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="py-16 bg-accent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-animate="26">
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-4">
-                Hazır mısınız? Bandırma Taksicim Kapınızda!
-            </h3>
-            <p class="text-xl text-gray-800 mb-8 font-semibold">
-                Şimdi arayın ve bulunduğunuz konuma en yakın aracımızı yönlendirelim.
-            </p>
-            <!-- tel: bağlantısı sorunsuz çalışır -->
-            <a href="tel:+905531233031" class="inline-block bg-blue-900 text-white text-xl font-bold py-3 px-10 rounded-full hover:bg-gray-700 transition duration-300 call-cta shadow-2xl">
-                📞 ANINDA REZERVASYON (0553 123 30 31)
-            </a>
-        </div>
-    </section>
+    <section class="py-16 bg-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-animate="26">
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-4">
+                Hazır mısınız? Bandırma Taksicim Kapınızda!
+            </h3>
+            <p class="text-xl text-gray-800 mb-8 font-semibold">
+                Şimdi arayın ve bulunduğunuz konuma en yakın aracımızı yönlendirelim.
+            </p>
+                        <a href="tel:+905531233031" class="inline-block bg-blue-900 text-white text-xl font-bold py-3 px-10 rounded-full hover:bg-gray-700 transition duration-300 call-cta shadow-2xl">
+                📞 ANINDA REZERVASYON (0553 123 30 31)
+            </a>
+        </div>
+    </section>
 
-    <!-- Sabit Çağrı Butonu (Mobile Özel - tel: bağlantısı sorunsuz çalışır) -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 sm:hidden z-[1000]">
-        <a href="tel:+905531233031" class="w-full bg-accent text-gray-900 text-xl font-extrabold py-3 rounded-xl fixed-call-btn text-center block">
-            Tıkla Ara 📞 (10 Dk'da Erişim)
-        </a>
-    </div>
+        <a href="tel:+905531233031" class="fixed bottom-0 left-0 right-0 p-4 sm:hidden z-[1000] w-full bg-accent text-gray-900 text-xl font-extrabold py-3 rounded-xl fixed-call-btn text-center block">
+        Tıkla Ara 📞 (10 Dk'da Erişim)
+    </a>
 
-    <footer id="iletisim" class="bg-primary-dark text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-animate="27">
-            <h4 class="text-2xl font-extrabold mb-4 accent-color">İletişim ve Adres</h4>
-            
-            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-12 text-md text-gray-300">
-                <p class="font-bold">
-                    <span class="mr-2 accent-color">📞</span>
-                    <!-- tel: bağlantısı sorunsuz çalışır -->
-                    <a href="tel:+905531233031" class="hover:text-accent transition duration-200">
-                        Telefon: 0553 123 30 31 (7/24 Aktif)
-                    </a>
-                </p>
-                <p>
-                    <span class="mr-2 accent-color">📧</span>
-                    <!-- mailto: bağlantısı sorunsuz çalışır -->
-                    <a href="mailto:bandirmataksici@hotmail.com" class="hover:text-accent transition duration-200">
-                        E-Posta: bandirmataksici@hotmail.com
-                    </a>
-                </p>
-                <p>
-                    <span class="mr-2 accent-color">📍</span>
-                    Bandırma Merkez, Balıkesir
-                </p>
-            </div>
-            
-            <p class="text-xs text-gray-500 mt-8">© 2025 BANDIRMA TAKSİCİM. Tüm Hakları Saklıdır.</p>
-        </div>
-    </footer>
+    <footer id="iletisim" class="bg-primary-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-animate="27">
+            <h4 class="text-2xl font-extrabold mb-4 accent-color">İletişim ve Adres</h4>
+            
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-12 text-md text-gray-300">
+                <p class="font-bold">
+                    <span class="mr-2 accent-color">📞</span>
+                                        <a href="tel:+905531233031" class="hover:text-accent transition duration-200">
+                        Telefon: 0553 123 30 31 (7/24 Aktif)
+                    </a>
+                </p>
+                <p>
+                    <span class="mr-2 accent-color">📧</span>
+                                        <a href="mailto:bandirmataksici@hotmail.com" class="hover:text-accent transition duration-200">
+                        E-Posta: bandirmataksici@hotmail.com
+                    </a>
+                </p>
+                <p>
+                    <span class="mr-2 accent-color">📍</span>
+                    Bandırma Merkez, Balıkesir
+                </p>
+            </div>
+            
+            <p class="text-xs text-gray-500 mt-8">© 2025 BANDIRMA TAKSİCİM. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- SCROLL ANIMASYON MANTIĞI ---
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.05
-            };
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- SCROLL ANIMASYON MANTIĞI ---
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.05
+            };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Animasyonu küçük bir gecikmeyle başlat (data-animate değeri kullanılarak)
-                        const delay = entry.target.dataset.animate * 50; 
-                        setTimeout(() => {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }, delay);
-                    }
-                });
-            }, observerOptions);
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animasyonu küçük bir gecikmeyle başlat (data-animate değeri kullanılarak)
+                        const delay = entry.target.dataset.animate * 50; 
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }, delay);
+                    }
+                });
+            }, observerOptions);
 
-            animateElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            // --- SMOOTH SCROLLING MANTIĞI (Sadece # Linkleri İçin) ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    
-                    // TEL linkleri, href^="#" selector'ının dışında olduğu için buraya girmez,
-                    // ancak yine de ek bir güvenlik kontrolü olarak tel: linklerinin
-                    // varsayılan davranışını (aramayı) engellemediğimizden emin oluyoruz.
-                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
-                        return; // Default davranışı engelleme
-                    }
-                    
-                    // Sadece sayfa içi # linkleri için smooth scroll
-                    e.preventDefault(); 
-                    const targetElement = document.querySelector(href);
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // --- SMOOTH SCROLLING MANTIĞI (Sadece # Linkleri İçin) ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    // TEL linkleri, href^="#" selector'ının dışında olduğu için buraya girmez,
+                    // ancak yine de ek bir güvenlik kontrolü olarak tel: linklerinin
+                    // varsayılan davranışını (aramayı) engellemediğimizden emin oluyoruz.
+                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+                        return; // Default davranışı engelleme
+                    }
+                    
+                    // Sadece sayfa içi # linkleri için smooth scroll
+                    e.preventDefault(); 
+                    const targetElement = document.querySelector(href);
 
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-            
-            // NOT: Tüm tel: bağlantılarının "a" etiketlerinde olması ve üzerlerinde 
-            // e.preventDefault() çağrılmaması, tarayıcının arama işlevini doğrudan tetiklemesini sağlar.
-        });
-    </script>
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // NOT: Tüm tel: bağlantılarının "a" etiketlerinde olması ve üzerlerinde 
+            // e.preventDefault() çağrılmaması, tarayıcının arama işlevini doğrudan tetiklemesini sağlar.
+        });
+    </script>
 </body>
 </html>
