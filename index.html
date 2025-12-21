@@ -28,47 +28,7 @@
         .text-primary-dark { color: var(--primary-dark); }
         .bg-primary-dark { background-color: var(--primary-dark); }
 
-       .hero-with-bg {
-    position: relative;
-    min-height: 70vh;
-    overflow: hidden;
-}
-
-.hero-with-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('https://i.ibb.co/5XNVqwJf/MG-4313.png');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: auto 100%;
-    transform: scale(1.05);
-    z-index: 0;
-}
-
-/* karartma */
-.hero-with-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(21, 47, 79, 0.75);
-    z-index: 1;
-}
-
-.hero-with-bg > div {
-    position: relative;
-    z-index: 2;
-}
-        @media (max-width: 768px) {
-    img {
-        transform: none;
-    }
-
-    .hero-with-bg::after {
-        background-size: auto 110%;
-    }
-}
-
+       
 
 
         
@@ -144,20 +104,27 @@
         /* Galeri Resmi Stili */
        .gallery-img-wrapper {
     background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
 }
 
 .gallery-img-wrapper img {
     width: 100%;
     height: auto;
-    max-height: 100%;
-    object-fit: contain; /* ← BLUR BİTER */
+    object-fit: contain;
+    image-rendering: auto;
 }
+@media (max-width: 768px) {
+    section img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
 
 
 
@@ -200,7 +167,44 @@ img {
 
     <!-- HERO SECTION -->
     <!-- py-20'den py-28'e yükseltildi ve min-h-screen mobil görünüme destek için eklendi (CSS'te) -->
-    <section class="hero-with-bg flex items-center justify-center text-center py-24 sm:py-32 md:py-40">
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+
+    <!-- GERÇEK HERO FOTO -->
+    <img 
+        src="https://i.ibb.co/5XNVqwJf/MG-4313.png"
+        alt="Bandırma Taksicim"
+        class="absolute inset-0 w-full h-full object-cover object-top"
+        decoding="async"
+        fetchpriority="high"
+    >
+
+    <!-- Koyu Overlay -->
+    <div class="absolute inset-0 bg-[#152F4F]/75"></div>
+
+    <!-- İçerik -->
+    <div class="relative z-10 max-w-4xl px-4 text-center animate-on-scroll" data-animate="3">
+        <h2 class="text-4xl sm:text-6xl font-black mb-6 leading-snug text-white">
+            Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
+        </h2>
+
+        <a href="tel:+905531233031"
+           class="inline-flex flex-col items-center justify-center
+                  bg-accent text-gray-900
+                  py-3 sm:py-4 px-8 sm:px-12
+                  rounded-full call-cta
+                  font-extrabold text-center">
+
+            <span class="text-xl sm:text-2xl flex items-center gap-2">
+                🚕 TAKSİ ÇAĞIR
+            </span>
+
+            <span class="text-base sm:text-lg font-semibold mt-1">
+                0553 123 30 31
+            </span>
+        </a>
+    </div>
+</section>
+
         <div class="max-w-4xl px-4 animate-on-scroll" data-animate="3">
             <h2 class="text-4xl sm:text-6xl font-black mb-4 leading-snug text-white">
                 Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
