@@ -133,12 +133,34 @@
             display: none !important; 
         }
         /* --- GÖRSEL KESKİNLİK ZORLAMA --- */
-img {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
     backface-visibility: hidden;
     transform: translateZ(0);
 }
+        .gallery-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 12px;
+    height: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+.gallery-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 
     </style>
 </head>
@@ -204,36 +226,6 @@ img {
         </a>
     </div>
 </section>
-
-        <div class="max-w-4xl px-4 animate-on-scroll" data-animate="3">
-            <h2 class="text-4xl sm:text-6xl font-black mb-4 leading-snug text-white">
-                Bandırma ve Çevresinin <span class="accent-color">En Güvenilir</span> Taksi Durağı
-            </h2>
-            <br>
-
-
-            <br>
-            
-            <!-- tel: bağlantısı sorunsuz çalışır -->
-            <a href="tel:+905531233031"
-   class="inline-flex flex-col items-center justify-center
-          bg-accent text-gray-900
-          py-3 sm:py-4 px-8 sm:px-12
-          rounded-full call-cta
-          font-extrabold text-center">
-
-    <span class="text-xl sm:text-2xl flex items-center gap-2">
-        🚕 TAKSİ ÇAĞIR
-    </span>
-
-    <span class="text-base sm:text-lg font-semibold mt-1">
-        0553 123 30 31
-    </span>
-
-</a>
-
-        </div>
-    </section>
     
     <section id="ksp" class="py-16 sm:py-20 bg-background-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -377,40 +369,43 @@ img {
         </div>
     </section>
 
-    <section id="galeri" class="py-16 sm:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll" data-animate="19">
-                Bandırma <span class="accent-color">Taksicim</span> Foto Galeri
-            </h3>
+    <section id="galeri" class="py-16 sm:py-20 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="20">
-                    <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Galeri 1" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="21">
-                    <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi Galeri 2" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="22">
-                    <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Taksi Galeri 3" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="23">
-                    <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Taksi Galeri 4" class="w-full h-full object-cover">
-                </div>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll">
+            Bandırma <span class="accent-color">Taksicim</span> Galeri
+        </h3>
 
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="24">
-                    <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Galeri 5" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="gallery-img-wrapper aspect-square rounded-xl shadow-md animate-on-scroll" data-animate="25">
-                    <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Taksi Galeri 6" class="w-full h-full object-cover">
-                </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Dış Görünüm">
             </div>
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi İç Görünüm">
+            </div>
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Bandırma Taksi Hizmeti">
+            </div>
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Gece Taksi">
+            </div>
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Filosu">
+            </div>
+
+            <div class="gallery-card animate-on-scroll">
+                <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Konforlu Taksi">
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section class="py-16 bg-accent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-animate="26">
