@@ -443,62 +443,47 @@
     </footer>
 
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
-    // --- SCROLL ANIMASYON MANTIĞI ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- SCROLL ANİMASYON --- */
     const animateElements = document.querySelectorAll('.animate-on-scroll');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 // %10'luk bir görünürlük threshold'u ile animasyon başlasın
-    };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const delay = entry.target.dataset.animate * 50;
+                const delay = (entry.target.dataset.animate || 0) * 50;
                 setTimeout(() => {
                     entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }, delay);
             }
         });
-    }, observerOptions);
-
-    animateElements.forEach(el => {
-        observer.observe(el);
+    }, {
+        threshold: 0.1
     });
-});
 
-            
-            // --- SMOOTH SCROLLING MANTIĞI (Sadece # Linkleri İçin) ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    
-                    // TEL linkleri, href^="#" selector'ının dışında olduğu için buraya girmez,
-                    // ancak yine de ek bir güvenlik kontrolü olarak tel: linklerinin
-                    // varsayılan davranışını (aramayı) engellemediğimizden emin oluyoruz.
-                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
-                        return; // Default davranışı engelleme
-                    }
-                    
-                    // Sadece sayfa içi # linkleri için smooth scroll
-                    e.preventDefault(); 
-                    const targetElement = document.querySelector(href);
+    animateElements.forEach(el => observer.observe(el));
 
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+    /* --- SMOOTH SCROLL (# linkler) --- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+
+            if (!href || href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
-            });
-            
-            // NOT: Tüm tel: bağlantılarının "a" etiketlerinde olması ve üzerlerinde 
-            // e.preventDefault() çağrılmaması, tarayıcının arama işlevini doğrudan tetiklemesini sağlar.
+            }
         });
-    </script>
+    });
+
+});
+</script>
+
 </body>
 </html>
