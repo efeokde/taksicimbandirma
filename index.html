@@ -102,28 +102,20 @@
         }
 
         /* Galeri Resmi Stili */
-       .gallery-img-wrapper {
-    background: #fff;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+       /* Galeri bölümünü tam ekran resimlere çevir */
+#galeri .gallery-card {
+    padding: 0;          /* kenar boşluğu kaldırıldı */
+    border-radius: 0;    /* köşeleri düzleştir */
+    box-shadow: none;    /* gölgeyi kaldır */
+    height: auto;        /* yükseklik otomatik */
 }
 
-.gallery-img-wrapper img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    image-rendering: auto;
+#galeri .gallery-card img {
+    width: 100vw;        /* ekranın tamamı */
+    height: 100vh;       /* ekranın tamamı */
+    object-fit: cover;   /* ekranı doldur, kırpma olabilir */
 }
-@media (max-width: 768px) {
-    section img {
-        max-width: 100%;
-        height: auto;
-    }
-}
+
 
 
 
@@ -133,8 +125,6 @@
             display: none !important; 
         }
         /* --- GÖRSEL KESKİNLİK ZORLAMA --- */
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
         .gallery-card {
     background: #ffffff;
@@ -193,12 +183,13 @@
 
     <!-- GERÇEK HERO FOTO -->
     <img 
-        src="https://i.ibb.co/5XNVqwJf/MG-4313.png"
-        alt="Bandırma Taksicim"
-        class="absolute inset-0 w-full h-full object-cover object-top"
-        decoding="async"
-        fetchpriority="high"
-    >
+    src="https://i.ibb.co/5XNVqwJf/MG-4313.png"
+    alt="Bandırma Taksicim"
+    class="absolute inset-0 w-full h-full object-cover object-top"
+    fetchpriority="high"
+    decoding="async"
+/>
+
 
     <!-- Koyu Overlay -->
     <div class="absolute inset-0 bg-[#152F4F]/75"></div>
@@ -369,42 +360,17 @@
         </div>
     </section>
 
-    <section id="galeri" class="py-16 sm:py-20 bg-background-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 animate-on-scroll">
-            Bandırma <span class="accent-color">Taksicim</span> Galeri
-        </h3>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Dış Görünüm">
-            </div>
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi İç Görünüm">
-            </div>
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Bandırma Taksi Hizmeti">
-            </div>
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Gece Taksi">
-            </div>
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Filosu">
-            </div>
-
-            <div class="gallery-card animate-on-scroll">
-                <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Konforlu Taksi">
-            </div>
-
-        </div>
+    <section id="galeri" class="relative overflow-hidden">
+    <div class="gallery-slider flex flex-col">
+        <img src="https://i.ibb.co/5xgZY00W/image.png" alt="Taksi Dış Görünüm" class="w-full h-screen object-cover">
+        <img src="https://i.ibb.co/gZJ9hP6y/image.png" alt="Taksi İç Görünüm" class="w-full h-screen object-cover">
+        <img src="https://i.ibb.co/ZRs18hBs/image.png" alt="Bandırma Taksi Hizmeti" class="w-full h-screen object-cover">
+        <img src="https://i.ibb.co/xS6hnnrJ/image.png" alt="Gece Taksi" class="w-full h-screen object-cover">
+        <img src="https://i.ibb.co/DHG0KRQd/image.png" alt="Taksi Filosu" class="w-full h-screen object-cover">
+        <img src="https://i.ibb.co/NnZq9dys/image.png" alt="Konforlu Taksi" class="w-full h-screen object-cover">
     </div>
 </section>
+
 
 
     <section class="py-16 bg-accent">
